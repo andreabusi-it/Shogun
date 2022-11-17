@@ -1,6 +1,8 @@
-public struct Shogun {
-    public private(set) var text = "Hello, World!"
+//
+//  Shogun.swift
+//  
+//
+//  Created by Andrea Busi (www.andreabusi.it).
+//
 
-    public init() {
-    }
-}
+import Foundation
