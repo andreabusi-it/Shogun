@@ -20,7 +20,7 @@ public protocol StoryboardInitializable where Self: UIViewController {
     static func makeViewController() -> Self
 }
 
-extension StoryboardInitializable {
+public extension StoryboardInitializable {
     static func makeViewController() -> Self {
         let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle(for: Self.self))
         guard let controller = storyboard.instantiateViewController(withIdentifier: storyboardControllerId) as? Self else {
