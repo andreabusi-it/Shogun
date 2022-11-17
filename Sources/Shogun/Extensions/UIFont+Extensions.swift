@@ -15,7 +15,7 @@ extension UIFont {
     ///    - style: The text style for which to return a font.
     ///    - weight: The weight of the font, specified as a font weight constant.
     /// - Returns: A font object of the specified style and weight.
-    static func preferredFont(
+    public static func preferredFont(
         forTextStyle style: TextStyle,
         weight: Weight
     ) -> UIFont {
