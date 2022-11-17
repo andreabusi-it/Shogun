@@ -10,7 +10,7 @@ import UIKit
 
 /// Conforms to this protocol to have a class method that  instantiate a new
 /// controller from Storybaord
-protocol StoryboardInitializable where Self: UIViewController {
+public protocol StoryboardInitializable where Self: UIViewController {
     /// Name of the Storybaord file where the controller is defined
     static var storyboardName: String { get }
     /// Controller Id defined in the Storybaord for the current class
