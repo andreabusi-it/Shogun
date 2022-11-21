@@ -24,3 +24,13 @@ extension Array {
         }
     }
 }
+
+
+extension Array where Element: Hashable {
+    
+    /// Create an array with unique values of the current array
+    /// - Returns: Array with distinct values
+    public func distinct() -> Array {
+        Array(Set(self))
+    }
+}

@@ -29,4 +29,9 @@ extension Data {
     public var utf8String: String {
         String(data: self, encoding: .utf8) ?? ""
     }
+    
+    /// Returns the byte's hex representation of the current data.
+    public var hexString: String {
+        return reduce("") { $0 + String(format: "%02x", $1) }
+    }
 }

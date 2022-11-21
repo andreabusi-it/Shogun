@@ -18,6 +18,12 @@ extension Int {
         self != 0
     }
     
+    /// Converts curren value to a string.
+    /// - Returns: String representation of current number
+    public var stringValue: String {
+        String(self)
+    }
+    
     /// Returns roman number rapresentation of the current value.
     ///
     /// Credits: https://stackoverflow.com/a/63357512

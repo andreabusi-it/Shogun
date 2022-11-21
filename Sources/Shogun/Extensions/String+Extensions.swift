@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CryptoKit
 
 
 extension String {
@@ -55,6 +56,34 @@ extension String {
         _ other: String
     ) -> Bool {
         range(of: other, options: .caseInsensitive) != nil
+    }
+    
+    /// Add a separator in the current string every N characters.
+    /// - Returns: Formatted string adding a separator.
+    public func separated(every stride: Int, with separator: Character) -> String {
+        return String(enumerated().map { $0 > 0 && $0 % stride == 0 ? [separator, $1] : [$1]}.joined())
+    }
+    
+    /// Returns SHA256 hash of the current string.
+    /// - Returns: SHA256 hash, nil if data convertion fails
+    public func sha256() -> String? {
+        guard let data = data(using: .utf8) else {
+            return nil
+        }
+        let hashed = SHA256.hash(data: data)
+        return hashed.compactMap { String(format: "%02x", $0) }.joined()
+    }
+    
+    /// Returns MD5 hash of the current string.
+    /// Please note that MD5 is considered an insecure algorithm.
+    /// - Returns: MD5 hash, nil if data convertion fails.
+    public func md5() -> String? {
+        guard let data = data(using: .utf8) else {
+            return nil
+        }
+        
+        let hashed = Insecure.MD5.hash(data: data)
+        return hashed.map { String(format: "%02hhx", $0) }.joined()
     }
 }
 

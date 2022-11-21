@@ -137,4 +137,16 @@ extension Dictionary {
     ) -> String {
         string(forKey: key) ?? defaultValue
     }
+    
+    /// Returns a pretty printed JSON version of the current dictionary.
+    /// String uses white space and indentation to make the resulting data more readable.
+    /// - Returns: JSON pretty-printed for the current dictionary.
+    public var prettyPrintedJson: String {
+        do {
+            let data = try JSONSerialization.data(withJSONObject: self, options: [.withoutEscapingSlashes, .prettyPrinted])
+            return String(data: data, encoding: .utf8) ?? ""
+        } catch {
+            return ""
+        }
+    }
 }
