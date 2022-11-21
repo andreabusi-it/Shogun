@@ -99,8 +99,8 @@ extension UIColor {
         
         if hexString.isEmpty { return nil }
         
-        var hexValue: UInt32 = 0
-        guard Scanner(string: hexString).scanHexInt32(&hexValue) else {
+        var hexValue: UInt64 = 0
+        guard Scanner(string: hexString).scanHexInt64(&hexValue) else {
             print("[Shogun] Scan of '\(rgba)' failed")
             return nil
         }
@@ -111,9 +111,9 @@ extension UIColor {
         case 4:
             self.init(hex4: UInt16(hexValue))
         case 6:
-            self.init(hex6: hexValue)
+            self.init(hex6: UInt32(hexValue))
         case 8:
-            self.init(hex8: hexValue)
+            self.init(hex8: UInt32(hexValue))
         default:
             print("[Shogun] Invalid RGB string from \(rgba), number of characters after '#' should be either 3, 4, 6 or 8")
             return nil
