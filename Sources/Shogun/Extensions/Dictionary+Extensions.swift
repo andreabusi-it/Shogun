@@ -143,7 +143,12 @@ extension Dictionary {
     /// - Returns: JSON pretty-printed for the current dictionary.
     public var prettyPrintedJson: String {
         do {
-            let data = try JSONSerialization.data(withJSONObject: self, options: [.withoutEscapingSlashes, .prettyPrinted])
+            var options: JSONSerialization.WritingOptions = [.prettyPrinted]
+            if #available(iOS 13, *) {
+                options = [ .prettyPrinted, .withoutEscapingSlashes ]
+            }
+            
+            let data = try JSONSerialization.data(withJSONObject: self, options: options)
             return String(data: data, encoding: .utf8) ?? ""
         } catch {
             return ""

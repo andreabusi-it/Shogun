@@ -66,6 +66,7 @@ extension String {
     
     /// Returns SHA256 hash of the current string.
     /// - Returns: SHA256 hash, nil if data convertion fails
+    @available(iOS 13.0, macOS 10.15, watchOS 6.0, tvOS 13.0, *)
     public func sha256() -> String? {
         guard let data = data(using: .utf8) else {
             return nil
@@ -77,6 +78,7 @@ extension String {
     /// Returns MD5 hash of the current string.
     /// Please note that MD5 is considered an insecure algorithm.
     /// - Returns: MD5 hash, nil if data convertion fails.
+    @available(iOS 13.0, macOS 10.15, watchOS 6.0, tvOS 13.0, *)
     public func md5() -> String? {
         guard let data = data(using: .utf8) else {
             return nil
