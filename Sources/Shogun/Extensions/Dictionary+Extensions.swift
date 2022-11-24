@@ -112,7 +112,7 @@ extension Dictionary {
     public func bool(
         forKey key: Key,
         orDefault defaultValue: Bool = false
-    ) -> Bool? {
+    ) -> Bool {
         bool(forKey: key) ?? defaultValue
     }
     
