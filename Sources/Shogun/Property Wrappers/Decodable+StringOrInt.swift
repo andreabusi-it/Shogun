@@ -28,7 +28,7 @@ import Foundation
 /// }
 /// ```
 ///
-///  Credits: https://theswiftdeveloper.com/2022/04/10/customizing-codable-with-property-wrappers/
+///  Credits: [theswiftdeveloper.com](https://theswiftdeveloper.com/2022/04/10/customizing-codable-with-property-wrappers/)
 ///
 @propertyWrapper
 public struct StringOrInt {

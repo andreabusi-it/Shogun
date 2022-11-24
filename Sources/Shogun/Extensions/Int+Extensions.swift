@@ -26,7 +26,7 @@ extension Int {
     
     /// Returns roman number rapresentation of the current value.
     ///
-    /// Credits: https://stackoverflow.com/a/63357512
+    /// Credits: [stackoverflow.com](https://stackoverflow.com/a/63357512)
     /// - Returns: Roman number rapresentation.
     public func romanNumber() -> String {
         let conversionTable: [(intNumber: Int, romanNumber: String)] =
