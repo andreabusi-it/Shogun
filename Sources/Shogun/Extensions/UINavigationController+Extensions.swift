@@ -33,11 +33,11 @@ extension UINavigationController {
     /// - Parameters:
     ///    - type: Type of controller to search.
     ///    - animated: Set this value to true to animate the transition.
-    public func popToLastViewController<T>(
-        of type: T,
+    public func popToLastViewController(
+        of type: AnyClass,
         animated: Bool
     ) {
-        if let controller = viewControllers.last(where: { $0 is T }) {
+        if let controller = viewControllers.last(where: { $0.isKind(of: type) }) {
             popToViewController(controller, animated: animated)
         }
     }
@@ -47,11 +47,11 @@ extension UINavigationController {
     /// - Parameters:
     ///    - type: Type of controller to search.
     ///    - animated: Set this value to true to animate the transition.
-    public func popToFirstViewController<T>(
-        of type: T,
+    public func popToFirstViewController(
+        of type: AnyClass,
         animated: Bool
     ) {
-        if let controller = viewControllers.first(where: { $0 is T }) {
+        if let controller = viewControllers.first(where: { $0.isKind(of: type) }) {
             popToViewController(controller, animated: animated)
         }
     }
