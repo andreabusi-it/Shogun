@@ -62,6 +62,31 @@ extension KeyedDecodingContainer {
         return value
     }
     
+    /// Decodes a string value to a Float for the given key.
+    /// - Parameter key: The key that the decoded value is associated with.
+    /// - Throws: `DecodingError.typeMismatch` if the encountered encoded value
+    ///   is not convertible to the requested type.
+    /// - Throws: `DecodingError.keyNotFound` if `self` does not have an entry
+    ///   for the given key.
+    /// - Throws: `DecodingError.valueNotFound` if `self` has a null entry for
+    ///   the given key.
+    /// - Returns: A Float value, if present for the given key and convertible to Float.
+    public func decodeFloat(
+       forKey key: Key
+    ) throws -> Float  {
+       // try first if is already a Float
+       if let value = try? self.decode(Float.self, forKey: key) {
+          return value
+       }
+       // try with a string value
+       let stringValue = try self.decode(String.self, forKey: key)
+       guard let value = Float(stringValue) else {
+          let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Impossible to decode Int for \(key.stringValue) key")
+          throw DecodingError.typeMismatch(Int.self, context)
+       }
+       return value
+    }
+    
     /// Decodes a string value to a Bool for the given key.
     /// - Parameter key: The key that the decoded value is associated with.
     /// - Throws: `DecodingError.typeMismatch` if the encountered encoded value
