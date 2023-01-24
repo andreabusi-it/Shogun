@@ -5,7 +5,7 @@
 //  Created by Andrea Busi (www.andreabusi.it).
 //
 
-import UIKit
+import Foundation
 import CryptoKit
 
 
