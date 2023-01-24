@@ -5,6 +5,7 @@
 //  Created by Andrea Busi (www.andreabusi.it).
 //
 
+#if canImport(UIKit)
 import UIKit
 
 
@@ -207,3 +208,5 @@ extension UIColor {
         return colors.randomElement()!
     }
 }
+
+#endif

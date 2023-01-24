@@ -144,7 +144,7 @@ extension Dictionary {
     public var prettyPrintedJson: String {
         do {
             var options: JSONSerialization.WritingOptions = [.prettyPrinted]
-            if #available(iOS 13, *) {
+            if #available(iOS 13, macOS 10.15, *) {
                 options = [ .prettyPrinted, .withoutEscapingSlashes ]
             }
             

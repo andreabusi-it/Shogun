@@ -1,6 +1,7 @@
 import XCTest
 @testable import Shogun
 
+#if canImport(UIKit)
 final class UIColorTests: XCTestCase {
     
     func testInitHex3() throws {
@@ -51,3 +52,4 @@ final class UIColorTests: XCTestCase {
         XCTAssertEqual(hex, "#A237C2A2")
     }
 }
+#endif

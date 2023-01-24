@@ -5,6 +5,7 @@
 //  Created by Andrea Busi (www.andreabusi.it).
 //
 
+#if canImport(UIKit)
 import UIKit
 
 
@@ -46,3 +47,5 @@ extension UITextField {
         return updatedText.count <= maxLength
     }
 }
+
+#endif

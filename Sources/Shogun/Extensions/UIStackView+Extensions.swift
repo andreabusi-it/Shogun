@@ -5,6 +5,7 @@
 //  Created by Andrea Busi (www.andreabusi.it).
 //
 
+#if canImport(UIKit)
 import UIKit
 
 
@@ -28,3 +29,5 @@ extension UIStackView {
         return view
     }
 }
+
+#endif
