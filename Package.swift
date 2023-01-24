@@ -7,8 +7,6 @@ let package = Package(
     name: "Shogun",
     platforms: [
         .iOS(.v12),
-        .watchOS(.v5),
-        .tvOS(.v12),
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
