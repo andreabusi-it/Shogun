@@ -23,6 +23,18 @@ extension Array {
             Array(self[$0 ..< Swift.min($0 + size, count)])
         }
     }
+    
+    /// Creates a new dictionary whose keys are the groupings returned by the
+    /// given closure and whose values are arrays of the elements that returned
+    /// each key.
+    /// - Parameters:
+    ///     - key: A closure that returns a key for each element in values.
+    /// - Returns: Dictionary with elements grouped by the key
+    public func group<U>(
+        by key: (Iterator.Element) -> U
+    ) -> [U: [Iterator.Element]] {
+        Dictionary(grouping: self, by: key)
+    }
 }
 
 
