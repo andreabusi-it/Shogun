@@ -8,7 +8,7 @@
 import Foundation
 
 
-@available(macOS 10.15, *)
+@available(iOS 13, macOS 10.15, *)
 extension Task where Success == Never, Failure == Never {
     
     /// Suspends the current task for at least the given duration in seconds.
