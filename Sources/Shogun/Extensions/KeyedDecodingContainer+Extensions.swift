@@ -104,14 +104,15 @@ extension KeyedDecodingContainer {
             return value
         }
         // try with a string value
-        let stringValue = try self.decode(String.self, forKey: key)
-        // check for "true" or "false" values
-        if let value = Bool(stringValue) {
-            return value
-        }
-        // check for "0" or "1" values
-        if let intValue = Int(stringValue) {
-            return intValue.boolValue
+        if let stringValue = try? self.decode(String.self, forKey: key) {
+            // check for "true" or "false" values
+            if let value = Bool(stringValue) {
+                return value
+            }
+            // check for "0" or "1" values
+            if let intValue = Int(stringValue) {
+                return intValue.boolValue
+            }
         }
         
         let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Impossible to decode Bool for \(key.stringValue) key")
