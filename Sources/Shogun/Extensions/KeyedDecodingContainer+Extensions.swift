@@ -103,6 +103,10 @@ extension KeyedDecodingContainer {
         if let value = try? self.decode(Bool.self, forKey: key) {
             return value
         }
+        // try with an int value
+        if let intValue = try? self.decode(Int.self, forKey: key) {
+            return intValue.boolValue
+        }
         // try with a string value
         if let stringValue = try? self.decode(String.self, forKey: key) {
             // check for "true" or "false" values
