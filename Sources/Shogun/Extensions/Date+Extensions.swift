@@ -121,4 +121,11 @@ extension Date {
         components.setValue(value, for: component)
         return components.date
     }
+    
+    /// Returns current date including only `year`, `month` and `day` components.
+    public func dateOnly() -> Date {
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        let date = Calendar.current.date(from: components)
+        return date!
+    }
 }
