@@ -87,6 +87,31 @@ extension KeyedDecodingContainer {
        return value
     }
     
+    /// Decodes a string value to a Double for the given key.
+    /// - Parameter key: The key that the decoded value is associated with.
+    /// - Throws: `DecodingError.typeMismatch` if the encountered encoded value
+    ///   is not convertible to the requested type.
+    /// - Throws: `DecodingError.keyNotFound` if `self` does not have an entry
+    ///   for the given key.
+    /// - Throws: `DecodingError.valueNotFound` if `self` has a null entry for
+    ///   the given key.
+    /// - Returns: A Double value, if present for the given key and convertible to Double.
+    public func decodeDouble(
+       forKey key: Key
+    ) throws -> Double  {
+       // try first if is already a Double
+       if let value = try? self.decode(Double.self, forKey: key) {
+          return value
+       }
+       // try with a string value
+       let stringValue = try self.decode(String.self, forKey: key)
+       guard let value = Double(stringValue) else {
+          let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Impossible to decode Double for \(key.stringValue) key")
+          throw DecodingError.typeMismatch(Int.self, context)
+       }
+       return value
+    }
+    
     /// Decodes a string value to a Bool for the given key.
     /// - Parameter key: The key that the decoded value is associated with.
     /// - Throws: `DecodingError.typeMismatch` if the encountered encoded value
