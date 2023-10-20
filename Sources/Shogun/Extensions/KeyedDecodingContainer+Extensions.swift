@@ -56,7 +56,7 @@ extension KeyedDecodingContainer {
         // try with a string value
         let stringValue = try self.decode(String.self, forKey: key)
         guard let value = UInt(stringValue) else {
-            let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Impossible to decode Int for \(key.stringValue) key")
+            let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Impossible to decode UInt for \(key.stringValue) key")
             throw DecodingError.typeMismatch(UInt.self, context)
         }
         return value
@@ -81,7 +81,7 @@ extension KeyedDecodingContainer {
        // try with a string value
        let stringValue = try self.decode(String.self, forKey: key)
        guard let value = Float(stringValue) else {
-          let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Impossible to decode Int for \(key.stringValue) key")
+          let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Impossible to decode Float for \(key.stringValue) key")
           throw DecodingError.typeMismatch(Int.self, context)
        }
        return value
