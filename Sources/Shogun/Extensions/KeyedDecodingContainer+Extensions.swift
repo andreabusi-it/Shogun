@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 
 extension KeyedDecodingContainer {
@@ -186,6 +187,26 @@ extension KeyedDecodingContainer {
             throw DecodingError.typeMismatch(Int.self, context)
         }
         return value
+    }
+    
+    /// Decodes two string values to a CLLocationCoordinate2D for the given keys.
+    /// - Parameter latitudeKey: The key that the latituide value is associated with.
+    /// - Parameter longitudeKey: The key that the longitude value is associated with.
+    /// - Throws: `DecodingError.typeMismatch` if the encountered encoded value
+    ///   is not convertible to the requested type.
+    /// - Throws: `DecodingError.keyNotFound` if `self` does not have an entry
+    ///   for the given key.
+    /// - Throws: `DecodingError.valueNotFound` if `self` has a null entry for
+    ///   the given key.
+    /// - Returns: A CLLocationCoordinate2D value, if both the given keys are available and convertible.
+    public func decodeCoordinate2D(
+       latitudeKey: Key,
+       longitudeKey: Key
+    ) throws -> CLLocationCoordinate2D  {
+       // try to extract Double values
+       let latitude = try self.decodeDouble(forKey: latitudeKey)
+       let longitude = try self.decodeDouble(forKey: longitudeKey)
+       return .init(latitude: latitude, longitude: longitude)
     }
     
     /// Decodes a string value to an Int for the given key, if present
