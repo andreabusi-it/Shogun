@@ -104,6 +104,19 @@ extension Date {
         return components.second ?? 0
     }
     
+    /// Returns current date with 00:00 as time.
+    public var midnight: Date {
+       let calendar = Calendar.current
+       return calendar.startOfDay(for: self)
+    }
+    
+    /// Returns current date with 23:59 as time.
+    public var beforeDayAfter: Date {
+       let calendar = Calendar.current
+       let tomorrow = calendar.date(byAdding: .day, value: 1, to: midnight) ?? self
+       return calendar.date(byAdding: .minute, value: -1, to: tomorrow) ?? self
+    }
+    
     /// Set value for given component for the current date.
     public func setValue(
         _ value: Int?,
