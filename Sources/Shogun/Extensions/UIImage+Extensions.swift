@@ -74,6 +74,33 @@ extension UIImage {
             return self
         }
     }
+    
+    /// Create gradient image from beginColor on top and end color at bottom
+    /// - Parameters:
+    ///   - beginColor: Begin color
+    ///   - endColor: End color
+    ///   - frame: Frame size
+    /// - Returns: Gradient image
+    public static func gradient(
+        from beginColor: UIColor,
+        to endColor: UIColor,
+        startPoint: CGPoint = .init(x: 0.0, y: 1.0),
+        endPoint: CGPoint = .init(x: 1.0, y: 1.0),
+        with frame: CGRect
+    ) -> UIImage {
+        let layer = CAGradientLayer()
+        layer.frame = frame
+        layer.colors = [beginColor.cgColor, endColor.cgColor]
+        layer.startPoint = startPoint
+        layer.endPoint = endPoint
+                
+        let renderer = UIGraphicsImageRenderer(size: layer.frame.size)
+        let gradientImage = renderer.image { context in
+            layer.render(in: context.cgContext)
+            UIGraphicsGetImageFromCurrentImageContext()?.resizableImage(withCapInsets: .zero, resizingMode: .stretch)
+        }
+        return gradientImage
+    }
 }
 
 #endif
